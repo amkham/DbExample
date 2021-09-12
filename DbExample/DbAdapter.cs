@@ -24,15 +24,15 @@ namespace DbExample
 
             string query = "SELECT * FROM [dbo].[Table]";
 
-            SqlCommand command = new SqlCommand(query, dbConnection.SqlConnection);
+            SqlCommand command = new(query, dbConnection.SqlConnection);
 
             SqlDataReader reader = command.ExecuteReader();
 
             while (reader.Read())
             {
 
-                People p = new People();
-                p.Id = Int32.Parse(reader[0].ToString());
+                People p = new();
+                p.Id = int.Parse(reader[0].ToString());
                 p.Name = reader[1].ToString();
                 p.Age = reader[2].ToString();
                 p.Data = reader[3].ToString();
